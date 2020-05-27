@@ -13,7 +13,7 @@ DB_HOST = "localhost"
 DB_USER = user
 DB_PASSWORD = "123"
 DB_DATABASE = "pet_test"
-DB_ECHO = True
+DB_ECHO = False
 REDIS = "redis://localhost"
 STATIC_PATH = "./static"
 

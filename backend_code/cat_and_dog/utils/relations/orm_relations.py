@@ -11,11 +11,9 @@ from cat_and_dog.utils.empty import Empty
 from .exception import RelationException
 
 
-def _do_load(self, row, *, none_as_none=None):
-    if none_as_none is None:
-        none_as_none = self._none_as_none
+def _do_load(self, row):
     values = dict((c.name, row[c]) for c in self.columns if c in row)
-    if none_as_none and all((v is None) for v in values.values()):
+    if all((v is None) for v in values.values()):
         return None
     rv = self.model()
     for c in self.columns:

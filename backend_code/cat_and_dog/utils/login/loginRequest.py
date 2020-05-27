@@ -30,7 +30,7 @@ class LoginRequest:
 
     @property
     def session(self):
-        return self["session"]
+        return self.ctx.session['session']
 
     def login(self, user):
         self.session["user_id"] = user.id
