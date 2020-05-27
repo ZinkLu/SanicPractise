@@ -7,12 +7,11 @@ uvloop.install()
 app = create_app("dev")
 
 
-async def main():
+async def init_db():
     from cat_and_dog.modules import db
     modules = (
         "cat_and_dog.modules.product.category",
-        "cat_and_dog.modules.product.spu",
-        "cat_and_dog.modules.product.brand",
+        "cat_and_dog.modules.product.goods",
         "cat_and_dog.modules.product.brand",
         "cat_and_dog.modules.pet",
         "cat_and_dog.modules.users",
@@ -23,24 +22,6 @@ async def main():
     await db.set_bind(app.config["DATABASE_URL"])
 
     await db.gino.create_all()
-
-
-async def test():
-    from cat_and_dog.modules import db
-    modules = (
-        "cat_and_dog.modules.product.category",
-        "cat_and_dog.modules.product.spu",
-        "cat_and_dog.modules.product.brand",
-        "cat_and_dog.modules.product.brand",
-        "cat_and_dog.modules.pet",
-        "cat_and_dog.modules.users",
-    )
-    for m in modules:
-        __import__(m + ".models")
-
-    await db.set_bind(app.config["DATABASE_URL"])
-
-    return db
 
 
 async def create_admin(username, pwd):

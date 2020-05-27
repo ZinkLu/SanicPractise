@@ -194,4 +194,8 @@ class ParentFavoriteRel(Base):
 
 ## Run
 
-...
+使用docker来最少入侵你的系统
+
+```sh
+docker run -it -p 5000:5000 zinkworld/cat_and_dog:lastest sh -c "(service postgresql start ;redis-server /etc/redis/redis.conf ; su - cat -c 'python /home/cat/backend_code/main.py')"
+```
